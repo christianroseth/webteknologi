@@ -96,7 +96,7 @@ self.addEventListener("fetch", (event) => {
 
 ### Obligatorisk
 - [Service Workers — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
-- [Service Workers: an Introduction](https://web.dev/articles/service-workers-lifecycle) — web.dev
+- [Service Workers: an Introduction](https://web.dev/articles/service-worker-lifecycle) — web.dev
 - [Web Workers — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
 
 ### Anbefalt

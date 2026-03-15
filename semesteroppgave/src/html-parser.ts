@@ -4,7 +4,7 @@
 // Din oppgave: Implementer en recursive descent parser som tar
 // en HTML-string og returnerer et DomNode-tre.
 //
-// Les mer: https://limpet.net/mbrubeck/2014/08/11/toy-layout-engine-2-html.html
+// Les mer: https://limpet.net/mbrubeck/2014/08/11/toy-layout-engine-2.html
 // ============================================================
 
 import type { DomNode } from "./typer.js";

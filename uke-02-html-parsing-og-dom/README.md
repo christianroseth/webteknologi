@@ -57,7 +57,7 @@ I semesteroppgaven bygger vi en **forenklet** parser som antar korrekt HTML. Vir
 ### Obligatorisk
 - [How Browsers Work — Parsing](https://web.dev/articles/howbrowserswork#parsing_general) — Tali Garsiel
 - [DOM — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
-- [Let's build a browser engine! Part 2: HTML](https://limpet.net/mbrubeck/2014/08/11/toy-layout-engine-2-html.html) — Matt Brubeck
+- [Let's build a browser engine! Part 2: HTML](https://limpet.net/mbrubeck/2014/08/11/toy-layout-engine-2.html) — Matt Brubeck
 
 ### Anbefalt
 - [HTML parsing specification](https://html.spec.whatwg.org/multipage/parsing.html) — WHATWG (referanse, ikke les alt)

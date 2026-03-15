@@ -78,7 +78,7 @@ Implementer en recursive descent parser som tar en HTML-string og returnerer et 
 **Ikke nødvendig:** Self-closing tags, kommentarer, doctype, feilhåndtering for ugyldig HTML.
 
 **Relevante lesestoff:**
-- [Let's build a browser engine! Part 2: HTML](https://limpet.net/mbrubeck/2014/08/11/toy-layout-engine-2-html.html)
+- [Let's build a browser engine! Part 2: HTML](https://limpet.net/mbrubeck/2014/08/11/toy-layout-engine-2.html)
 
 ---
 

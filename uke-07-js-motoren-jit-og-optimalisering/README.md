@@ -76,13 +76,13 @@ add("hei", "verden"); // → Deoptimalisering!
 ## Lesestoff
 
 ### Obligatorisk
-- [An Introduction to Speculative Optimization in V8](https://ponyfoo.com/articles/an-introduction-to-speculative-optimization-in-v8) — Benedikt Meurer
+- [An Introduction to Speculative Optimization in V8](https://benediktmeurer.de/2017/12/13/an-introduction-to-speculative-optimization-in-v8/) — Benedikt Meurer
 - [V8 Hidden Classes](https://v8.dev/blog/fast-properties) — V8 Blog
 - [What's up with monomorphism?](https://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html) — Vyacheslav Egorov
 
 ### Anbefalt
 - [TurboFan JIT Design](https://v8.dev/docs/turbofan) — V8 Docs
-- [Deoptimization in V8](https://docs.google.com/presentation/d/1Z6oCocRASCfTqGq68Wu-RJgWEs1wQoMqR_uFpz9qBa4) — Slides
+- [Deoptimization in V8](https://docs.google.com/presentation/d/1Z6oCocRASCfTqGq1GCo1jbULDGS-w-nzxkbVF7Up0u0/htmlpresent) — Slides
 
 ## Oppgaver
 
