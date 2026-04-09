@@ -56,7 +56,30 @@ Paint → Layer tree → Rasterize (GPU) → Composite → Skjerm
 }
 ```
 
-`transform` er mye raskere fordi den kun krever compositing — ingen ny layout eller paint.
+`transform` er mye raskere av to grunner:
+
+1. **Ingen ny layout eller paint** — Endring i `left` endrer elementets geometri, som tvinger nettleseren til å reberegne layout for berørte elementer og male på nytt. `transform` endrer ikke geometrien i layout-treet — det er rent visuelt.
+
+2. **Compositor-tråden** — Compositing kjøres på en *separat tråd* fra main thread. Når et elements animasjon kun krever compositing (som `transform` og `opacity`), kan GPU-en flytte laget uten å involvere main thread i det hele tatt. Det betyr at animasjonen fortsetter å kjøre jevnt selv om main thread er opptatt med JavaScript eller annet arbeid.
+
+Effekten av `left`-animasjon er derfor avhengig av main thread. Bruker du `transform`, er du fri fra den avhengigheten.
+
+### `will-change` — med forbehold
+
+`will-change` er et CSS-hint som ber nettleseren forberede et lag på forhånd:
+
+```css
+.animert-element {
+  will-change: transform;
+}
+```
+
+Dette kan gi jevnere animasjonsstart, men det er viktig å bruke det sparsomt:
+- Hvert element med `will-change` forbruker GPU-minne allerede *før* animasjonen starter
+- Å sette `will-change: transform` på mange elementer fører direkte til layer explosion (se under)
+- Fjern `will-change` etter at animasjonen er ferdig hvis mulig
+
+Tommelfingerregel: bruk `will-change` kun på elementer som faktisk animeres, og kun hvis du ser konkret jank uten det.
 
 ### Lag-eksplosjoner
 
@@ -106,6 +129,7 @@ Lag en side med 50 absolutt-posisjonerte elementer som overlapper hverandre. Gi 
 |--------|------------|
 | Compositing | Å sette sammen malte lag til det endelige bildet |
 | Compositor-lag | Separat tegneflate som kan manipuleres av GPU |
+| Compositor-tråd | Separat tråd som kjører compositing uavhengig av main thread |
 | GPU-akselerasjon | Bruk av grafikkprosessoren for rasterisering og compositing |
 | Layer explosion | Uønsket opprettelse av for mange lag |
-| `will-change` | CSS-hint til nettleseren om kommende endringer |
+| `will-change` | CSS-hint til nettleseren om kommende endringer — bruk sparsomt |

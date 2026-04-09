@@ -43,10 +43,31 @@ Sammenligning skjer fra venstre: id > klasse > tag.
 
 ### Kaskaden
 
-Når spesifisiteten er lik, avgjøres det av rekkefølge — siste regel vinner. Den fullstendige kaskadealgoritmen tar hensyn til:
-1. Opprinnelse (brukeragent, bruker, forfatter)
-2. Spesifisitet
-3. Kilderekkefølge
+Når spesifisiteten er lik, avgjøres det av rekkefølge — siste regel vinner. Den fullstendige kaskadealgoritmen tar hensyn til (i prioritert rekkefølge):
+
+1. **`!important`-flagg** — Deklarasjoner merket med `!important` overstyrer alt annet, uavhengig av opprinnelse og spesifisitet. Brukeragent-stiler med `!important` vinner til og med over forfatter-stiler med `!important`.
+2. **Opprinnelse** — Brukeragent (nettleserens standardstiler) < Bruker < Forfatter (din CSS)
+3. **Kaskadelag (`@layer`)** — Moderne CSS (2022) lar deg organisere regler i navngitte lag. Regler i et lag som er definert *seinere* vinner over regler i tidligere lag, uavhengig av spesifisitet. Regler *utenfor* `@layer` vinner alltid over regler innenfor.
+4. **Spesifisitet** — (id, klasse, tag)-tripelen
+5. **Kilderekkefølge** — Siste regel vinner ved ellers lik prioritet
+
+```css
+/* @layer-eksempel */
+@layer base, theme;
+
+@layer base {
+  h1 { color: black; }   /* Denne taper... */
+}
+
+@layer theme {
+  h1 { color: blue; }    /* ...fordi theme er definert etter base */
+}
+
+/* Regel utenfor @layer vinner alltid over regler innenfor */
+h1 { color: red; }       /* Denne vinner, selv om spesifisiteten er lik */
+```
+
+`@layer` er baseline-støttet i alle moderne nettlesere siden 2022 og vil du møte i produksjonskode.
 
 ### Render-blocking CSS
 
@@ -93,6 +114,23 @@ p { color: black; }
 #box p { color: red; }
 div .text { color: purple; }
 ```
+
+<details>
+<summary>Fasit (prøv selv først)</summary>
+
+| Selektor | Spesifisitet | Farge |
+|----------|-------------|-------|
+| `p` | (0,0,1) | black |
+| `.text` | (0,1,0) | blue |
+| `.highlight p` | (0,1,1) | green |
+| `#box p` | (1,0,1) | **red** ← vinner |
+| `div .text` | (0,1,1) | purple |
+
+`#box p` vinner med spesifisitet (1,0,1) fordi ID-en (1) slår alle de andre.
+
+Legg merke til at `.highlight p` og `div .text` begge har spesifisitet (0,1,1). Når spesifisiteten er *lik*, vinner siste regel i kilden — det betyr at `div .text` (purple) ville vunnet over `green` *hvis* ikke `#box p` slo dem begge. Kilderekkefølge er tie-breaker.
+
+</details>
 
 ### Oppgave 3: CSSOM i DevTools
 

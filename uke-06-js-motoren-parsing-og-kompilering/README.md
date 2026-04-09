@@ -110,21 +110,24 @@ for (let i = 0; i < 1000; i++) {
 
 Kjør med V8-flagg:
 ```bash
-node --print-ast test.js 2>&1 | head -50
 node --print-bytecode --print-bytecode-filter=add test.js
 ```
 
+> **Merk:** `--print-ast` har vært ustabil i nyere Node.js-versjoner og kan gi lite output eller feile. For å se AST interaktivt, bruk [astexplorer.net](https://astexplorer.net/) i stedet — det er mer pålitelig og lettere å lese.
+
 Studer output:
-1. Finn `add`-funksjonen i AST-output.
-2. Identifiser bytekode-instruksjonene for `a + b`.
+1. Identifiser bytekode-instruksjonene for `a + b` i `--print-bytecode`-outputen.
+2. Finn register-instruksjonene som laster `a` og `b` og legger dem sammen.
 
 ### Oppgave 3: Lazy parsing
 
-Lag en fil med to funksjoner — én som kalles umiddelbart og én som aldri kalles. Bruk `--trace-parse` for å se hvilke som parses og når:
+Lag en fil med to funksjoner — én som kalles umiddelbart og én som aldri kalles. Bruk `--trace-opt` for å se hvilke funksjoner V8 faktisk kompilerer og optimaliserer:
 
 ```bash
-node --trace-parse test.js 2>&1 | grep -i "parse"
+node --trace-opt test.js 2>&1 | grep -i "compil"
 ```
+
+> **Merk:** `--trace-parse` er ikke et gyldig V8-flagg og vil ikke gi nyttig output. `--trace-opt` viser hvilke funksjoner TurboFan kompilerer — en god indikator på hvilke funksjoner V8 har valgt å fullparse og varme opp.
 
 ## Semesteroppgave
 

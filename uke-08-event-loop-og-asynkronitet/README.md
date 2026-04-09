@@ -66,7 +66,10 @@ console.log("4");
 3. `Promise.then` — legges i microtask queue
 4. `"4"` — synkront, kjøres umiddelbart
 5. Call stack tom → tøm microtask queue → `"3"`
-6. Neste event loop-iterasjon → ta fra task queue → `"2"`
+6. Rendering-mulighet (nettleseren kan male et nytt bilde her, om nødvendig)
+7. Neste event loop-iterasjon → ta fra task queue → `"2"`
+
+Steg 6 er grunnen til at `requestAnimationFrame`-callbacks kjøres *mellom* mikrotask-tømming og neste makrotask. Det er også grunnen til at en uendelig løkke av mikrotasks (f.eks. `Promise.then` som kaller seg selv) kan henge nettleseren — rendering-trinnet nås aldri.
 
 ### `requestAnimationFrame`
 

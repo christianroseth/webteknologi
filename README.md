@@ -28,11 +28,11 @@ Etter fullført kurs skal studenten kunne:
 | 3 | CSS-parsing og CSSOM | Spesifisitetsberegning | Begynn milepæl 2 |
 | 4 | Rendertreet, layout og paint | Tving reflow i DevTools | **Innlevering milepæl 1** |
 | 5 | Compositing og GPU-akselerasjon | `left` vs `transform` profilering | Begynn milepæl 3 |
-| 6 | JS-motoren — parsing og kompilering | V8 `--print-ast`/`--print-bytecode` | **Innlevering milepæl 2** |
+| 6 | JS-motoren — parsing og kompilering | V8 `--print-bytecode`, AST Explorer | **Innlevering milepæl 2** |
 | 7 | JS-motoren — JIT og optimalisering | Trigger deoptimalisering | Begynn milepæl 4 |
 | 8 | Event loop og asynkronitet | Bygg event loop-simulator | **Innlevering milepæl 3** |
-| 9 | Nettverk — DNS, TCP, TLS | Wireshark-analyse | — |
-| 10 | Nettverk — HTTP/1.1, HTTP/2, HTTP/3 | Multiplexing-demo | Begynn milepæl 4 |
+| 9 | Nettverk — DNS, TCP, TLS | Wireshark-analyse | Fortsett milepæl 4 |
+| 10 | Nettverk — HTTP/1.1, HTTP/2, HTTP/3 | Multiplexing-demo | Fortsett milepæl 4 |
 | 11 | Web APIer og Workers | Service Worker + offline-cache | **Innlevering milepæl 4** |
 | 12 | Modulsystemer og byggverktøy | Bygg mini-bundler | Begynn milepæl 5 |
 | 13 | Ytelse og Core Web Vitals | Lighthouse-audit | — |
@@ -80,3 +80,13 @@ Se [ressurser/verktoy.md](ressurser/verktoy.md) for installasjonsinstruksjoner o
 - Kjennskap til TypeScript
 - Erfaring med React (eller tilsvarende rammeverk)
 - Komfortabel med terminalen og Git
+
+### TypeScript-nivå for semesteroppgaven
+
+Semesteroppgaven krever mer enn grunnleggende TypeScript. Du bør være komfortabel med:
+
+- Union-typer og type narrowing (`type A = B | C`, `if (x.type === "keyword")`)
+- Generiske typer og grensesnitt (`interface`, `Map<string, Value>`)
+- Rekursive datastrukturer (en node som inneholder en liste av noder av samme type)
+
+Hvis noe av dette er ukjent, bruk de første dagene av kurset til å gå gjennom [TypeScript Handbook — Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) og [Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html). Det vil spare deg for mye frustrasjon i milepæl 1.

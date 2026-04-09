@@ -52,6 +52,8 @@ npm run test:watch
 npm run dev
 ```
 
+> **Hva er `npm run dev`?** Oppgaven bruker [Vite](https://vite.dev/) som byggverktøy — du vil se det i `package.json`. Vite starter en rask utviklingsserver og sørger for at endringer i TypeScript-filene dine vises i nettleseren uten full reload. I **uke 12** lærer du i detalj hvordan Vite og bundlere som dette fungerer under panseret. Inntil da er det nok å vite at `npm run dev` starter serveren og `npm test` kjører testene.
+
 ## Milepæler
 
 ### Milepæl 1: HTML-parser (innlevering etter uke 4)
@@ -181,6 +183,15 @@ Lever sammen med milepæl 5. Reflekter over:
 - Hva overrasket deg?
 - Hvordan endret prosjektet forståelsen din av hva nettleseren gjør?
 - Hva var vanskeligst? Hva ville du gjort annerledes?
+
+**Vurderingsrubrikk for refleksjonsnotatet (20 %):**
+
+| Poeng | Kriterium |
+|-------|-----------|
+| 18–20 | Viser konkret, faglig innsikt knyttet til kursinnholdet. Reflekterer over *hvorfor* noe var vanskelig eller overraskende, ikke bare *at* det var det. Kobler egne erfaringer fra implementasjonen til konsepter fra forelesningene. |
+| 13–17 | God refleksjon med relevante observasjoner. Noe generelt ("det var lærerikt"), men supplert med konkrete eksempler fra arbeidet. |
+| 8–12 | Besvarer spørsmålene, men overfladisk. Mangler faglig dybde eller kobling til kursstoff. |
+| 0–7 | Mangler, svært kort, eller rent beskrivende uten refleksjon. |
 
 ## Filstruktur
 

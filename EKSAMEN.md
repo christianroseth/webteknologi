@@ -123,8 +123,9 @@ Beskriv hvordan du ville **målt** at forbedringene faktisk virker. Hvilke verkt
   <script>
     // Problem: innerHTML med brukerinput → XSS
     const params = new URLSearchParams(location.search);
+    const name = params.get("name") ?? "gjest";
     document.getElementById("app").innerHTML = `
-      <h1>Velkommen, ${params.get("name")}!</h1>
+      <h1>Velkommen, ${name}!</h1>
     `;
 
     // Problem: Layout thrashing
@@ -134,7 +135,10 @@ Beskriv hvordan du ville **målt** at forbedringene faktisk virker. Hvilke verkt
       item.style.height = (height * 1.1) + "px"; // Skriv (invaliderer layout)
     });
 
-    // Problem: Minnelekkasje — event listener uten cleanup
+    // Problem: Ukontrollert DOM-vekst og potensiell minnelekkasje
+    // Hvert 100ms legges det til et nytt element i DOM som aldri fjernes.
+    // Listener-closuren holder en referanse til `el`, men siden `el` er i DOM,
+    // er det DOM-veksten (ikke en klassisk GC-lekkasje) som er hovedproblemet.
     setInterval(() => {
       const el = document.createElement("div");
       el.addEventListener("click", () => {
@@ -165,7 +169,20 @@ Beskriv hvordan du ville **målt** at forbedringene faktisk virker. Hvilke verkt
 - Bruk av terminologi (10 %)
 
 ### Del C
-- Korrekt identifisering av problemer (C1)
-- Teknisk korrekte løsningsforslag (C2)
-- Forståelse av måling og verktøy (C3)
-- Vekting: dybdeforståelse av *hvorfor* teller mer enn ren identifisering
+
+**C1 — Identifisering (15 %):**
+- 13–15 p: Identifiserer ≥ 5 problemer korrekt, forklarer *hvorfor* hvert er et problem med referanse til nettleserens interne mekanismer (ikke bare "det er en sårbarhet")
+- 8–12 p: Identifiserer 3–4 problemer korrekt med rimelig forklaring
+- 3–7 p: Identifiserer problemer overfladisk uten mekanistisk forklaring
+- 0–2 p: Vesentlig feil eller svært mangelfull
+
+**C2 — Løsningsforslag (15 %):**
+- 13–15 p: Korrekte løsninger for alle identifiserte problemer, med kodeeksempel og forklaring av *hvorfor* løsningen fungerer (hva endrer det i nettleserens oppførsel)
+- 8–12 p: Korrekte løsninger uten full forklaring, eller mangler kodeeksempel
+- 3–7 p: Delvis korrekte løsninger
+- 0–2 p: Vesentlig feil
+
+**C3 — Måling (10 %):**
+- 9–10 p: Navngir riktige verktøy (DevTools Performance, Lighthouse, Network-panel) og konkrete metrikker (LCP, INP, CLS) for hvert type problem. Forklarer hvordan sikkerhetsproblemer verifiseres (CSP-rapport, manuell XSS-test).
+- 5–8 p: Nevner riktige verktøy uten å knytte dem til konkrete metrikker eller problemer
+- 0–4 p: Vag eller feil

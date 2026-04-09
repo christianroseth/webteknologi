@@ -45,9 +45,10 @@ Klient                    Server
 **Forbedringer:**
 - **Multiplexing** — Flere forespørsler over én TCP-tilkobling
 - **Header-komprimering** (HPACK) — Bare endringer sendes
-- **Server Push** — Serveren kan sende ressurser proaktivt
 - **Binært protokoll** — Mer effektiv parsing enn HTTP/1.1s tekstformat
 - **Prioritering** — Klienten kan angi hvilke ressurser som haster mest
+
+> **Merk:** HTTP/2 hadde opprinnelig også *Server Push*, der serveren kunne sende ressurser proaktivt uten at klienten ba om dem. Denne funksjonen viste seg å være vanskelig å bruke riktig i praksis og har blitt droppet: Chrome fjernet støtten i 2022 (v106), og de fleste servere og CDN-er implementerer den ikke lenger. Du vil se den nevnt i eldre litteratur, men den er ikke lenger relevant for moderne webutvikling.
 
 **Men:** TCP-lagets head-of-line blocking er fortsatt et problem. Hvis én TCP-pakke mistes, blokkeres ALLE strømmer.
 
@@ -103,11 +104,13 @@ Fang trafikk til en HTTP/2-side:
 1. Filtrer med `http2`.
 2. Identifiser HEADERS-rammer og DATA-rammer.
 3. Se hvordan flere strømmer er interleaved over én TCP-tilkobling.
-4. Finn et eksempel på prioritering (PRIORITY-ramme).
+4. Observer stream-ID-feltet — legg merke til at partall-IDer brukes av serveren og oddetall av klienten.
+
+> **Merk:** HTTP/2 hadde opprinnelig PRIORITY-rammer for prioritering, men RFC 9218 (2022) erstattet dette systemet. Moderne servere sender ikke lenger PRIORITY-rammer, så du vil ikke finne dem i en vanlig capture.
 
 ## Semesteroppgave
 
-**Denne uken:** Begynn milepæl 4 (Layout). Fokuser på `Dimensions`, `Rect` og `EdgeSizes` i `typer.ts`.
+**Denne uken:** Fortsett milepæl 4 (Layout). Du begynte på dette i uke 7 — innlevering er uke 11.
 
 ## Nøkkelbegreper
 

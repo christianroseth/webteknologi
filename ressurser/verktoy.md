@@ -153,11 +153,11 @@ git config --global user.email "din.epost@example.com"
 For å utforske V8-motorens indre virkemåte kan du bruke Node.js med V8-flagg:
 
 ```bash
-# Vis AST (Abstract Syntax Tree)
-node --print-ast script.js
-
 # Vis generert bytekode
 node --print-bytecode script.js
+
+# Filtrer bytekode til én funksjon
+node --print-bytecode --print-bytecode-filter=funktionsNavn script.js
 
 # Vis JIT-kompilering
 node --trace-opt script.js
@@ -168,6 +168,8 @@ node --trace-deopt script.js
 # Vis garbage collection
 node --trace-gc script.js
 ```
+
+> **Merk:** `--print-ast` er ikke pålitelig i nyere Node.js-versjoner. Bruk [astexplorer.net](https://astexplorer.net/) for interaktiv AST-visualisering i stedet.
 
 ---
 

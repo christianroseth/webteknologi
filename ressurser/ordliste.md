@@ -17,7 +17,6 @@ Denne ordlisten dekker sentrale begreper brukt i kurset. Der det norske begrepet
 | Rasterisering | Rasterization | Konvertering av vektorer/former til piksler |
 | Omflytning | Reflow | Ny layout-beregning etter endring i DOM/CSS |
 | Ommaling | Repaint | Ny maling uten endring i layout |
-| Boksmodell | Box model | CSS-modellen med content, padding, border, margin |
 
 ## HTML og DOM
 
@@ -31,6 +30,7 @@ Denne ordlisten dekker sentrale begreper brukt i kurset. Der det norske begrepet
 | Parsing / tolking | Parsing | Konvertering av tekst til strukturert data (tre) |
 | Tokenisering | Tokenization | Oppdeling av tekst i meningsfulle enheter (tokens) |
 | Rekursiv nedstigning | Recursive descent | Parsingteknikk der hver grammatikkregel er en funksjon |
+| Preload-skanner | Preload scanner | Sekundær skanning som finner ressurser og starter nedlasting mens parseren er blokkert |
 
 ## CSS
 
@@ -42,8 +42,10 @@ Denne ordlisten dekker sentrale begreper brukt i kurset. Der det norske begrepet
 | Deklarasjon | Declaration | Et egenskap–verdi-par (f.eks. `color: red`) |
 | Spesifisitet | Specificity | System for å avgjøre hvilken CSS-regel som vinner |
 | Kaskade | Cascade | Algoritmen som bestemmer endelig stilverdi |
+| Kaskadelag | Cascade layer (`@layer`) | Navngitte lag som organiserer CSS-regler med eksplisitt prioritetsrekkefølge |
 | Arv | Inheritance | Mekanisme der barn arver stiler fra foreldre |
 | Beregnet verdi | Computed value | Endelig CSS-verdi etter kaskade og arv |
+| Boksmodell | Box model | CSS-modellen med content, padding, border, margin |
 
 ## JavaScript og motor
 

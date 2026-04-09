@@ -37,7 +37,7 @@ Angriper injiserer JavaScript som kjører i offerets nettleser:
 // Kommentarfelt: <img onerror="stealCookies()" src="x">
 
 // DOM-basert XSS — direkte DOM-manipulering
-document.innerHTML = userInput; // ALDRI gjør dette!
+document.getElementById("output").innerHTML = userInput; // ALDRI gjør dette!
 ```
 
 **Forsvar:**

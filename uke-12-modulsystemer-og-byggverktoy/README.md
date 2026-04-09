@@ -99,11 +99,21 @@ Vite bruker nettleserens native ESM-støtte i utvikling — ingen bundling nødv
 
 Lag en forenklet bundler i Node.js som:
 1. Leser en inngangsfil (entry point)
-2. Finner alle `import`-statements med regex
-3. Bygger en avhengighetsgraf (dependency graph)
-4. Kombinerer alle filer til én output-fil
+2. Finner alle `import`-statements med regex (f.eks. `import .* from ['"](.+)['"]`)
+3. Bygger en **avhengighetsgraf** — et objekt der hver fil peker til listen av filer den importerer
+4. Gjør en topologisk sortering av grafen (filer med færrest avhengigheter først)
+5. Kombinerer alle filer til én output-fil i riktig rekkefølge
 
-Du trenger ikke håndtere `export` — bare konkatener filene i riktig rekkefølge.
+Grafen din trenger ikke å håndtere navngitte exports eller re-exports — fokuser på å finne *hvilke filer som avhenger av hvilke* og sørge for at de kombineres i korrekt rekkefølge. Dette er kjernen i hva en ekte bundler gjør.
+
+**Eksempel:**
+```
+entry.js  importerer  utils.js og math.js
+math.js   importerer  utils.js
+
+→ Avhengighetsgraf: { entry: [utils, math], math: [utils], utils: [] }
+→ Topologisk rekkefølge: utils → math → entry
+```
 
 ### Oppgave 2: Tree shaking i praksis
 

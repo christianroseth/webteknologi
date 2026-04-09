@@ -46,17 +46,27 @@ TCP garanterer at data kommer frem i riktig rekkefølge og uten tap. Prisen er e
 TLS 1.3 trenger bare **én ekstra rundtur** (vs. to i TLS 1.2):
 
 ```
-Klient                         Server
-  |--- ClientHello ------------->|   Støttede krypto-algoritmer + nøkkelutveksling
-  |<-- ServerHello, Certificate--|   Valgt algoritme + sertifikat + ferdig
-  |--- Finished ----------------->|  Klienten verifiserer sertifikatet
-  |<====== Kryptert data =======>|
+Klient                              Server
+  |--- ClientHello ----------------->|  Støttede algoritmer + nøkkelutveksling (key share)
+  |                                  |
+  |<-- ServerHello ------------------|  Valgt algoritme + server sin key share
+  |<-- {EncryptedExtensions} --------|  (kryptert fra nå av)
+  |<-- {Certificate} ----------------|  Serverens sertifikat
+  |<-- {CertificateVerify} ----------|  Bevis på at serveren eier privnøkkelen
+  |<-- {Finished} -------------------|  Server er ferdig — kryptert forbindelse etablert
+  |                                  |
+  |--- {Finished} ------------------>|  Klient bekrefter
+  |<====== Kryptert data ==========>|
 ```
+
+Merk at serveren sender sertifikat, bekreftelse og `Finished` i *samme flight* som `ServerHello` — det er dette som gjør TLS 1.3 til 1-RTT. Klienten trenger ikke vente på en ekstra rundtur for å få sertifikatet.
+
+I TLS 1.2 måtte serveren sende sertifikatet i en separat melding *etter* at nøkkelutvekslingen var bekreftet — det krevde 2 RTT. TLS 1.3 redesignet handshaken slik at hele denne prosessen komprimeres til én rundtur.
 
 **Hva oppnås:**
 - **Konfidensialitet** — Data er kryptert (AES-GCM eller ChaCha20)
-- **Integritet** — Data kan ikke endres underveis
-- **Autentisitet** — Sertifikatet beviser at serveren er ekte
+- **Integritet** — Data kan ikke endres underveis (HMAC)
+- **Autentisitet** — Sertifikatet og `CertificateVerify` beviser at serveren er ekte
 
 ### Total oppkoblingstid
 
@@ -92,8 +102,11 @@ dig +trace example.com
 # Mål DNS-tid
 dig example.com | grep "Query time"
 
-# Se DNS-cache (macOS)
-sudo dscacheutil -flushcache  # Tøm cache
+# Tøm DNS-cache (macOS — begge kommandoer er nødvendige)
+sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder
+
+# Tøm DNS-cache (Linux)
+sudo systemd-resolve --flush-caches
 ```
 
 Gjør oppslag for 3 forskjellige domener. Sammenlign Query time med og uten cache.
@@ -111,11 +124,11 @@ Gjør oppslag for 3 forskjellige domener. Sammenlign Query time med og uten cach
 
 1. Fang trafikk mens du åpner en HTTPS-side.
 2. Filtrer med `tls.handshake`.
-3. Identifiser:
-   - ClientHello — hvilke cipher suites tilbys?
-   - ServerHello — hvilken cipher suite ble valgt?
-   - Certificate — hvem utstedte sertifikatet?
-4. Sammenlign TLS 1.2 vs. TLS 1.3 — hvor mange rundturer brukes?
+3. Identifiser meldingstypene i TLS 1.3-handshaken:
+   - `ClientHello` — hvilke cipher suites tilbys? Hvilke key share-grupper?
+   - `ServerHello` — hvilken cipher suite ble valgt?
+   - `Certificate`, `CertificateVerify`, `Finished` — sendes disse i samme flight som ServerHello?
+4. Sammenlign med en TLS 1.2-tilkobling (noen eldre sider bruker det) — ser du den ekstra rundturen?
 
 ## Nøkkelbegreper
 

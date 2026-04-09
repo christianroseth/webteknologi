@@ -37,6 +37,8 @@ Tiden det tar før det **største synlige elementet** er ferdig rendret. Typisk:
 
 Tiden fra bruker interagerer (klikk, tast, tap) til nettleseren viser resultatet.
 
+INP erstattet **FID (First Input Delay)** som Core Web Vital i mars 2024. FID målte bare forsinkelsen til *første* interaksjon og ignorerte behandlingstid og paint — det ga et ufullstendig bilde av responsivitet. INP måler alle interaksjoner gjennom hele sidebesøket og inkluderer den fulle syklusen frem til faktisk visuell oppdatering. Det er en vesentlig strengere metrikk.
+
 **Vanlige problemer:**
 - Lang oppgave på main thread (> 50ms)
 - Tung JavaScript som blokkerer input-håndtering

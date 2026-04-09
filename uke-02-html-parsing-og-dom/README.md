@@ -52,6 +52,25 @@ HTML-parseren er ekstremt feiltolerant. Den håndterer manglende lukkingstags, f
 
 I semesteroppgaven bygger vi en **forenklet** parser som antar korrekt HTML. Virkelige nettlesere har tusenvis av linjer dedikert til feilhåndtering.
 
+### Preload-skanneren
+
+Parseren er entrådet og blokkerer når den treffer en `<script>`-tag (JavaScript kan endre DOM, så parseren kan ikke fortsette). Uten noe smartere ville alle ressurser lastes sekvensielt.
+
+For å omgå dette har nettleseren en **preload-skanner** — en andre, lettere skanning som kjører *parallelt* med parseren. Den leser fremover i HTML-kildekoden og finner ressursreferanser (`src`, `href`, `srcset`) *mens* parseren er blokkert:
+
+```html
+<head>
+  <script src="analytics.js"></script>  <!-- Parser blokkerer her -->
+  <!-- Preload-skanneren har allerede sett disse og startet nedlasting: -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <img src="hero.jpg">  <!-- Også funnet av preload-skanneren -->
+</body>
+```
+
+Preload-skanneren er en av de viktigste ytelsesoptimaliseringene i moderne nettlesere. Den er grunnen til at ressurser begynner å lastes parallelt selv når parseren er blokkert av JavaScript.
+
 ## Lesestoff
 
 ### Obligatorisk
@@ -108,3 +127,4 @@ Test nettleserens feiltoleranse. Åpne DevTools og lim inn denne HTML-en i en to
 | DOM | Document Object Model — trerepresentasjon av dokumentet |
 | Node | Enkelt punkt i DOM-treet (element, tekst, kommentar, etc.) |
 | Feiltoleranse | HTMLs evne til å håndtere ugyldig markup uten å krasje |
+| Preload-skanner | Sekundær skanning som starter ressursnedlasting mens parseren er blokkert |
