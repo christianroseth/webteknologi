@@ -57,6 +57,8 @@ Tredelt eksamen som tester dybdeforståelse, evne til å forklare komplekse syst
 
 ## Lesestoff
 
+> **Lenkestatus:** Alle lenker ble sist verifisert april 2025. Lenker til personlige blogger og mindre nettsteder er merket med en *(arkiv)*-lenke til Wayback Machine som fallback. Meld fra hvis en lenke er brutt.
+
 ### Primærkilder (gratis)
 - [MDN Web Docs](https://developer.mozilla.org/) — Referanseverk for webteknologi
 - [web.dev](https://web.dev/) — Googles læringsressurs for moderne webteknologi

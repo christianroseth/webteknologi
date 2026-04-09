@@ -72,7 +72,7 @@ Bytekode er mer kompakt enn AST (sparer minne) og raskere å tolke enn rå kilde
 ### Obligatorisk
 - [V8's JavaScript parsing](https://v8.dev/blog/scanner) — V8 Blog
 - [Blazingly fast parsing, part 1](https://v8.dev/blog/preparser) — V8 Blog (lazy parsing)
-- [Understanding V8's Bytecode](https://medium.com/dailyjs/understanding-v8s-bytecode-317d46c94775) — Franziska Hinkelmann
+- [Ignition: An Interpreter for V8](https://v8.dev/blog/ignition-interpreter) — V8 Blog (erstatter Medium-artikkelen av Franziska Hinkelmann som er utilgjengelig bak paywall)
 
 ### Anbefalt
 - [AST Explorer](https://astexplorer.net/) — Interaktiv AST-visualisering

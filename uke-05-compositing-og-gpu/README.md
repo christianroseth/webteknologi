@@ -93,7 +93,7 @@ For mange lag er også et problem — hvert lag bruker GPU-minne. "Layer explosi
 - [GPU Accelerated Compositing in Chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/) — Chromium docs
 
 ### Anbefalt
-- [Layers and how to force them](https://surma.dev/things/forcing-layers/) — Surma
+- [Layers and how to force them](https://surma.dev/things/forcing-layers/) — Surma ([arkiv](https://web.archive.org/web/2024/https://surma.dev/things/forcing-layers/))
 
 ## Oppgaver
 

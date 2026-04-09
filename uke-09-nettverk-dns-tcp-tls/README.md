@@ -81,7 +81,7 @@ Total:      ~110ms  (før første byte data!)
 ## Lesestoff
 
 ### Obligatorisk
-- [How DNS works](https://howdns.works/) — Visuell forklaring
+- [How DNS works](https://howdns.works/) — Visuell forklaring ([arkiv](https://web.archive.org/web/2024/https://howdns.works/))
 - [Inside look at modern web browser (Part 2)](https://developer.chrome.com/blog/inside-browser-part2) — Nettverksseksjonen
 - [TLS 1.3 — A major revision](https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/) — Cloudflare Blog
 

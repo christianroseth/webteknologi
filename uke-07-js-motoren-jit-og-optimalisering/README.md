@@ -76,13 +76,13 @@ add("hei", "verden"); // → Deoptimalisering!
 ## Lesestoff
 
 ### Obligatorisk
-- [An Introduction to Speculative Optimization in V8](https://benediktmeurer.de/2017/12/13/an-introduction-to-speculative-optimization-in-v8/) — Benedikt Meurer
+- [An Introduction to Speculative Optimization in V8](https://benediktmeurer.de/2017/12/13/an-introduction-to-speculative-optimization-in-v8/) — Benedikt Meurer ([arkiv](https://web.archive.org/web/2024/https://benediktmeurer.de/2017/12/13/an-introduction-to-speculative-optimization-in-v8/))
 - [V8 Hidden Classes](https://v8.dev/blog/fast-properties) — V8 Blog
-- [What's up with monomorphism?](https://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html) — Vyacheslav Egorov
+- [What's up with monomorphism?](https://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html) — Vyacheslav Egorov ([arkiv](https://web.archive.org/web/2024/https://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html))
 
 ### Anbefalt
 - [TurboFan JIT Design](https://v8.dev/docs/turbofan) — V8 Docs
-- [Deoptimization in V8](https://docs.google.com/presentation/d/1Z6oCocRASCfTqGq1GCo1jbULDGS-w-nzxkbVF7Up0u0/htmlpresent) — Slides
+- [Deoptimization in V8](https://docs.google.com/presentation/d/1Z6oCocRASCfTqGq1GCo1jbULDGS-w-nzxkbVF7Up0u0/htmlpresent) — Slides ([arkiv](https://web.archive.org/web/2024/https://docs.google.com/presentation/d/1Z6oCocRASCfTqGq1GCo1jbULDGS-w-nzxkbVF7Up0u0/htmlpresent))
 
 ## Oppgaver
 

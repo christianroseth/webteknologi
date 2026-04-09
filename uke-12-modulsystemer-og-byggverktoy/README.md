@@ -86,7 +86,7 @@ Vite bruker nettleserens native ESM-støtte i utvikling — ingen bundling nødv
 
 ### Obligatorisk
 - [JavaScript modules — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
-- [ES Modules: A cartoon deep-dive](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/) — Lin Clark
+- [ES Modules: A cartoon deep-dive](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/) — Lin Clark ([arkiv](https://web.archive.org/web/2024/https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/))
 - [Why Vite](https://vite.dev/guide/why) — Vite docs
 
 ### Anbefalt

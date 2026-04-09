@@ -88,7 +88,7 @@ elements.forEach((el, i) => {
 
 ### Anbefalt
 - [CSS Box Model — MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model)
-- [What forces layout/reflow](https://gist.github.com/paulirish/5d52fb081b3570c81e3a) — Paul Irish
+- [What forces layout/reflow](https://gist.github.com/paulirish/5d52fb081b3570c81e3a) — Paul Irish ([arkiv](https://web.archive.org/web/2024/https://gist.github.com/paulirish/5d52fb081b3570c81e3a))
 
 ## Oppgaver
 

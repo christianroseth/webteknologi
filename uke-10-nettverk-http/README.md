@@ -74,7 +74,7 @@ HTTP/3 erstatter TCP med **QUIC** (basert på UDP):
 
 ### Obligatorisk
 - [HTTP/2 Introduction](https://web.dev/articles/performance-http2) — web.dev
-- [HTTP/3 explained](https://http3-explained.haxx.se/) — Daniel Stenberg (curl-skaperen)
+- [HTTP/3 explained](https://http3-explained.haxx.se/) — Daniel Stenberg (curl-skaperen) ([arkiv](https://web.archive.org/web/2024/https://http3-explained.haxx.se/))
 - [Inside look at modern web browser (Part 2)](https://developer.chrome.com/blog/inside-browser-part2) — Nettverksseksjonen
 
 ### Anbefalt

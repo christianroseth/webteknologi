@@ -88,7 +88,7 @@ function animate() {
 
 ### Obligatorisk
 - [The event loop — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop)
-- [Tasks, microtasks, queues and schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/) — Jake Archibald
+- [Tasks, microtasks, queues and schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/) — Jake Archibald ([arkiv](https://web.archive.org/web/2024/https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/))
 - [Inside look at modern web browser (Part 3)](https://developer.chrome.com/blog/inside-browser-part3) — Event loop-seksjonen
 
 ### Anbefalt
