@@ -63,6 +63,7 @@ npm run dev
 Implementer en recursive descent parser som tar en HTML-string og returnerer et DOM-tre (`DomNode`).
 
 **Du skal implementere:**
+
 - `parseHtml(source: string): DomNode` — Hovedfunksjon
 - En `Parser`-klasse med:
   - `pos` — nåværende posisjon i input-strengen
@@ -80,6 +81,7 @@ Implementer en recursive descent parser som tar en HTML-string og returnerer et 
 **Ikke nødvendig:** Self-closing tags, kommentarer, doctype, feilhåndtering for ugyldig HTML.
 
 **Relevante lesestoff:**
+
 - [Let's build a browser engine! Part 2: HTML](https://limpet.net/mbrubeck/2014/08/11/toy-layout-engine-2.html)
 
 ---
@@ -91,6 +93,7 @@ Implementer en recursive descent parser som tar en HTML-string og returnerer et 
 Implementer en parser som tar en CSS-string og returnerer et `Stylesheet`.
 
 **Du skal implementere:**
+
 - `parseCss(source: string): Stylesheet` — Hovedfunksjon
 - `parseRule()` — Parse én CSS-regel (selektorer + deklarasjoner)
 - `parseSelectors()` — Parse kommaseparerte selektorer
@@ -103,6 +106,7 @@ Implementer en parser som tar en CSS-string og returnerer et `Stylesheet`.
 **Ikke nødvendig:** Media queries, pseudo-klasser, shorthand properties, enheter utover `px`.
 
 **Relevante lesestoff:**
+
 - [Let's build a browser engine! Part 3: CSS](https://limpet.net/mbrubeck/2014/08/13/toy-layout-engine-3-css.html)
 
 ---
@@ -114,6 +118,7 @@ Implementer en parser som tar en CSS-string og returnerer et `Stylesheet`.
 Koble CSS-regler til DOM-noder og bygg et style tree.
 
 **Du skal implementere:**
+
 - `buildStyleTree(root: DomNode, stylesheet: Stylesheet): StyledNode` — Hovedfunksjon
 - `matchRule(elem: ElementData, rule: Rule): MatchedRule | null` — Sjekk om en regel matcher et element
 - `matchSelector(elem: ElementData, selector: Selector): boolean` — Sjekk om en selektor matcher
@@ -123,6 +128,7 @@ Koble CSS-regler til DOM-noder og bygg et style tree.
 **Nøkkelalgoritme:** For hver DOM-node: finn matchende regler → sorter etter spesifisitet → bygg `specifiedValues` map.
 
 **Relevante lesestoff:**
+
 - [Let's build a browser engine! Part 4: Style](https://limpet.net/mbrubeck/2014/08/23/toy-layout-engine-4-style.html)
 
 ---
@@ -134,6 +140,7 @@ Koble CSS-regler til DOM-noder og bygg et style tree.
 Beregn posisjoner og dimensjoner for alle bokser (kun block layout).
 
 **Du skal implementere:**
+
 - `buildLayoutTree(styledNode: StyledNode, containerWidth: number): LayoutBox` — Hovedfunksjon
 - `layoutBlock(box: LayoutBox, containingBlock: Dimensions): void` — Legg ut en blokk-boks
 - `calculateBlockWidth(box: LayoutBox, containingBlock: Dimensions): void` — Beregn bredde
@@ -144,6 +151,7 @@ Beregn posisjoner og dimensjoner for alle bokser (kun block layout).
 **Nøkkelalgoritme:** Bredde beregnes top-down (fra forelder), høyde beregnes bottom-up (fra innhold).
 
 **Relevante lesestoff:**
+
 - [Let's build a browser engine! Part 5: Boxes](https://limpet.net/mbrubeck/2014/09/08/toy-layout-engine-5-boxes.html)
 - [Let's build a browser engine! Part 6: Block layout](https://limpet.net/mbrubeck/2014/09/17/toy-layout-engine-6-block.html)
 
@@ -156,6 +164,7 @@ Beregn posisjoner og dimensjoner for alle bokser (kun block layout).
 Traverser layout-treet og generer tegnekommandoer, og render til Canvas.
 
 **Du skal implementere:**
+
 - `buildDisplayList(layoutRoot: LayoutBox): DisplayCommand[]` — Bygg liste med tegnekommandoer
 - `paint(commands: DisplayCommand[], ctx: CanvasRenderingContext2D): void` — Tegn til Canvas
 - `renderBackground(box: LayoutBox, list: DisplayCommand[]): void` — Legg til bakgrunnsfarge-kommando
@@ -164,21 +173,23 @@ Traverser layout-treet og generer tegnekommandoer, og render til Canvas.
 **Rendering:** Resultatet vises i nettleseren via `index.html` (med Vite og Canvas).
 
 **Relevante lesestoff:**
+
 - [Let's build a browser engine! Part 7: Painting 101](https://limpet.net/mbrubeck/2014/11/05/toy-layout-engine-7-painting.html)
 
 ---
 
 ## Vurdering
 
-| Kriterium | Andel | Beskrivelse |
-|-----------|-------|-------------|
-| Funksjonalitet | 50 % | Passerer testene for hver milepæl |
-| Kodeforståelse | 30 % | Korte kommentarer som viser at du forstår HVORFOR, ikke bare HVA |
-| Refleksjonsnotat | 20 % | 500–800 ord ved siste innlevering |
+| Kriterium        | Andel | Beskrivelse                                                      |
+| ---------------- | ----- | ---------------------------------------------------------------- |
+| Funksjonalitet   | 50 %  | Passerer testene for hver milepæl                                |
+| Kodeforståelse   | 30 %  | Korte kommentarer som viser at du forstår HVORFOR, ikke bare HVA |
+| Refleksjonsnotat | 20 %  | 500–800 ord ved siste innlevering                                |
 
 ### Refleksjonsnotat
 
 Lever sammen med milepæl 5. Reflekter over:
+
 - Hva lærte du gjennom å bygge en browser engine?
 - Hva overrasket deg?
 - Hvordan endret prosjektet forståelsen din av hva nettleseren gjør?
@@ -186,12 +197,12 @@ Lever sammen med milepæl 5. Reflekter over:
 
 **Vurderingsrubrikk for refleksjonsnotatet (20 %):**
 
-| Poeng | Kriterium |
-|-------|-----------|
-| 18–20 | Viser konkret, faglig innsikt knyttet til kursinnholdet. Reflekterer over *hvorfor* noe var vanskelig eller overraskende, ikke bare *at* det var det. Kobler egne erfaringer fra implementasjonen til konsepter fra forelesningene. |
-| 13–17 | God refleksjon med relevante observasjoner. Noe generelt ("det var lærerikt"), men supplert med konkrete eksempler fra arbeidet. |
-| 8–12 | Besvarer spørsmålene, men overfladisk. Mangler faglig dybde eller kobling til kursstoff. |
-| 0–7 | Mangler, svært kort, eller rent beskrivende uten refleksjon. |
+| Poeng | Kriterium                                                                                                                                                                                                                           |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 18–20 | Viser konkret, faglig innsikt knyttet til kursinnholdet. Reflekterer over _hvorfor_ noe var vanskelig eller overraskende, ikke bare _at_ det var det. Kobler egne erfaringer fra implementasjonen til konsepter fra forelesningene. |
+| 13–17 | God refleksjon med relevante observasjoner. Noe generelt ("det var lærerikt"), men supplert med konkrete eksempler fra arbeidet.                                                                                                    |
+| 8–12  | Besvarer spørsmålene, men overfladisk. Mangler faglig dybde eller kobling til kursstoff.                                                                                                                                            |
+| 0–7   | Mangler, svært kort, eller rent beskrivende uten refleksjon.                                                                                                                                                                        |
 
 ## Filstruktur
 

@@ -1,14 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { buildLayoutTree } from "../src/layout.js";
 import { createElement, createTextNode } from "../src/dom.js";
-import type {
-  StyledNode,
-  Value,
-  Keyword,
-  Length,
-  Color,
-  LayoutBox,
-} from "../src/typer.js";
+import type { StyledNode, Value, Keyword, Length, Color, LayoutBox } from "../src/typer.js";
 
 // --- Hjelpefunksjoner ---
 
@@ -27,7 +20,7 @@ function color(r: number, g: number, b: number): Color {
 function styledElement(
   tag: string,
   values: [string, Value][],
-  children: StyledNode[] = []
+  children: StyledNode[] = [],
 ): StyledNode {
   return {
     node: createElement(tag, new Map(), []),
@@ -47,9 +40,7 @@ function styledText(text: string): StyledNode {
 describe("Layout", () => {
   describe("buildLayoutTree", () => {
     it("skal opprette en layout-boks med riktig bredde fra container", () => {
-      const styled = styledElement("div", [
-        ["display", keyword("block")],
-      ]);
+      const styled = styledElement("div", [["display", keyword("block")]]);
 
       const layout = buildLayoutTree(styled, 800);
       expect(layout.dimensions.content.width).toBe(800);
@@ -122,11 +113,7 @@ describe("Layout", () => {
         ["display", keyword("block")],
         ["height", length(30)],
       ]);
-      const parent = styledElement(
-        "div",
-        [["display", keyword("block")]],
-        [child1, child2]
-      );
+      const parent = styledElement("div", [["display", keyword("block")]], [child1, child2]);
 
       const layout = buildLayoutTree(parent, 800);
       expect(layout.children).toHaveLength(2);
@@ -141,11 +128,7 @@ describe("Layout", () => {
         ["display", keyword("block")],
         ["height", length(100)],
       ]);
-      const parent = styledElement(
-        "div",
-        [["display", keyword("block")]],
-        [child]
-      );
+      const parent = styledElement("div", [["display", keyword("block")]], [child]);
 
       const layout = buildLayoutTree(parent, 800);
       // Forelderens høyde skal være summen av barnas høyder

@@ -64,9 +64,7 @@ describe("CSS-parser", () => {
     });
 
     it("skal parse flere deklarasjoner", () => {
-      const stylesheet = parseCss(
-        "div { margin: 10px; padding: 5px; background: #cccccc; }"
-      );
+      const stylesheet = parseCss("div { margin: 10px; padding: 5px; background: #cccccc; }");
       const rule = stylesheet.rules[0];
       expect(rule.declarations).toHaveLength(3);
       expect(rule.declarations[0].name).toBe("margin");

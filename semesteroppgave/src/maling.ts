@@ -29,10 +29,7 @@ export function buildDisplayList(_layoutRoot: LayoutBox): DisplayCommand[] {
  *
  * Itererer gjennom kommandoene og tegner hvert rektangel med riktig farge.
  */
-export function paint(
-  _commands: DisplayCommand[],
-  _ctx: CanvasRenderingContext2D
-): void {
+export function paint(_commands: DisplayCommand[], _ctx: CanvasRenderingContext2D): void {
   // TODO: Implementer Canvas-maling
   // Hint: For hver SolidColor-kommando:
   // 1. Sett ctx.fillStyle til riktig farge

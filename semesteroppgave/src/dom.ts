@@ -27,7 +27,7 @@ export function createTextNode(text: string): DomNode {
 export function createElement(
   tag: string,
   attrs: Map<string, string>,
-  children: DomNode[]
+  children: DomNode[],
 ): DomNode {
   const elementData: ElementData = {
     tagName: tag,
