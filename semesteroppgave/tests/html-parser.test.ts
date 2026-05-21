@@ -73,9 +73,7 @@ describe("HTML-parser", () => {
     });
 
     it("skal parse dyp nøsting", () => {
-      const result = parseHtml(
-        "<html><body><div><p>Dypt</p></div></body></html>"
-      );
+      const result = parseHtml("<html><body><div><p>Dypt</p></div></body></html>");
       expect(isElement(result.nodeType)).toBe(true);
       if (isElement(result.nodeType)) {
         expect(result.nodeType.tagName).toBe("html");
@@ -101,7 +99,7 @@ describe("HTML-parser", () => {
       // Parseren kan velge å inkludere eller ignorere whitespace-noder.
       // Vi sjekker bare at p-elementet finnes med riktig innhold.
       const pNode = result.children.find(
-        (child) => isElement(child.nodeType) && child.nodeType.tagName === "p"
+        (child) => isElement(child.nodeType) && child.nodeType.tagName === "p",
       );
       expect(pNode).toBeDefined();
       if (pNode) {

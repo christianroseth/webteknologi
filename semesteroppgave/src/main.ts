@@ -79,11 +79,7 @@ function renderToCanvas(htmlSource: string, cssSource: string): void {
     console.error("Feil under rendering:", error);
     ctx.fillStyle = "#ff0000";
     ctx.font = "16px monospace";
-    ctx.fillText(
-      `Feil: ${error instanceof Error ? error.message : String(error)}`,
-      20,
-      30
-    );
+    ctx.fillText(`Feil: ${error instanceof Error ? error.message : String(error)}`, 20, 30);
   }
 }
 

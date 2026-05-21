@@ -44,7 +44,7 @@ function makeLayoutBox(
     borderColor: Color;
     borderWidth: number;
     children: LayoutBox[];
-  }> = {}
+  }> = {},
 ): LayoutBox {
   const dims = zeroDimensions();
   dims.content.x = overrides.x ?? 0;
@@ -103,10 +103,7 @@ describe("Maling", () => {
       const commands = buildDisplayList(box);
       const bgCommand = commands.find(
         (cmd) =>
-          cmd.type === "solid" &&
-          cmd.color.r === 100 &&
-          cmd.color.g === 150 &&
-          cmd.color.b === 200
+          cmd.type === "solid" && cmd.color.r === 100 && cmd.color.g === 150 && cmd.color.b === 200,
       );
       expect(bgCommand).toBeDefined();
       expect(bgCommand!.rect).toEqual({
@@ -132,10 +129,7 @@ describe("Maling", () => {
       // Bør ha minst 4 border-rektangler (topp, bunn, venstre, høyre)
       const borderCommands = commands.filter(
         (cmd) =>
-          cmd.type === "solid" &&
-          cmd.color.r === 0 &&
-          cmd.color.g === 0 &&
-          cmd.color.b === 0
+          cmd.type === "solid" && cmd.color.r === 0 && cmd.color.g === 0 && cmd.color.b === 0,
       );
       expect(borderCommands.length).toBeGreaterThanOrEqual(4);
     });
@@ -163,10 +157,10 @@ describe("Maling", () => {
       const commands = buildDisplayList(parent);
       // Skal inneholde kommandoer for både forelder og barn
       const blueCommands = commands.filter(
-        (cmd) => cmd.type === "solid" && cmd.color.b === 255 && cmd.color.r === 0
+        (cmd) => cmd.type === "solid" && cmd.color.b === 255 && cmd.color.r === 0,
       );
       const redCommands = commands.filter(
-        (cmd) => cmd.type === "solid" && cmd.color.r === 255 && cmd.color.b === 0
+        (cmd) => cmd.type === "solid" && cmd.color.r === 255 && cmd.color.b === 0,
       );
       expect(blueCommands.length).toBeGreaterThanOrEqual(1);
       expect(redCommands.length).toBeGreaterThanOrEqual(1);
@@ -187,10 +181,10 @@ describe("Maling", () => {
       const commands = buildDisplayList(parent);
       // Forelderens bakgrunn skal komme FØR barnets
       const parentIdx = commands.findIndex(
-        (cmd) => cmd.type === "solid" && cmd.color.b === 255 && cmd.color.r === 0
+        (cmd) => cmd.type === "solid" && cmd.color.b === 255 && cmd.color.r === 0,
       );
       const childIdx = commands.findIndex(
-        (cmd) => cmd.type === "solid" && cmd.color.r === 255 && cmd.color.b === 0
+        (cmd) => cmd.type === "solid" && cmd.color.r === 255 && cmd.color.b === 0,
       );
       expect(parentIdx).toBeLessThan(childIdx);
     });

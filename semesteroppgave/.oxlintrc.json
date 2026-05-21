@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "typescript/no-unused-vars": "error",
+    "typescript/no-shadow": "error",
+    "typescript/no-redeclare": "error"
+  },
+  "ignorePatterns": ["node_modules/**", "dist/**", "testfiler/**"]
+}

@@ -21,10 +21,7 @@ import type { StyledNode, LayoutBox } from "./typer.js";
  * @param styledNode - Roten av style-treet
  * @param containerWidth - Bredden på viewport/forelder-containeren
  */
-export function buildLayoutTree(
-  _styledNode: StyledNode,
-  _containerWidth: number
-): LayoutBox {
+export function buildLayoutTree(_styledNode: StyledNode, _containerWidth: number): LayoutBox {
   // TODO: Implementer layout-algoritmen
   // Hint:
   // 1. Opprett en LayoutBox for noden

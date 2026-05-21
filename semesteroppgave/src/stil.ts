@@ -16,10 +16,7 @@ import type { DomNode, Stylesheet, StyledNode } from "./typer.js";
  * Hver DOM-node får tilknyttede CSS-verdier basert på matchende regler.
  * Regler sorteres etter spesifisitet — høyest spesifisitet vinner.
  */
-export function buildStyleTree(
-  _root: DomNode,
-  _stylesheet: Stylesheet
-): StyledNode {
+export function buildStyleTree(_root: DomNode, _stylesheet: Stylesheet): StyledNode {
   // TODO: Implementer style tree-bygging
   // Hint: For hvert element i DOM-treet:
   // 1. Finn alle CSS-regler som matcher (matchSelector)
